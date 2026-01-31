@@ -1,17 +1,88 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import Features from '../components/Features';
+import SupportedAgents from '../components/SupportedAgents';
+import KeyFeature from '../components/KeyFeature';
+import KeyFeatureWithSlot from '../components/KeyFeatureWithSlot.astro';
+import Install from '../components/Install';
+import Footer from '../components/Footer';
+import GitWorktreeDemo from '../components/GitWorktreeDemo';
+import GitStatusDemo from '../components/GitStatusDemo';
+import SpeedFeatureVisual from '../components/SpeedFeatureVisual';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Your AI Coding Skwad">
+  <main>
+    <Hero client:load />
+
+    <Features client:visible />
+
+    <KeyFeature
+      client:visible
+      subtitle="The Game Changer"
+      title="Agent-to-Agent Communication"
+      description="The main differentiator of Skwad is its built-in MCP server that enables true collaboration. Agents can discover each other, send messages, broadcast updates, and coordinate complex tasks without your intervention."
+      features={[
+        'Agents auto-register when they start up',
+        'Send direct messages or broadcast to all agents',
+        'Automatic notifications when agents become idle',
+        'Real coordination, not just parallel execution'
+      ]}
+      highlight={true}
+    />
+
+    <SupportedAgents client:visible />
+
+    <KeyFeatureWithSlot
+      subtitle="Powerful Integration"
+      title="Git Worktrees Made Easy"
+      description="Skwad's git integration goes beyond basic version control. Create isolated development environments with worktrees, manage multiple features simultaneously, and keep your agents working in perfect parallel."
+      features={[
+        'Quick access to recent repositories',
+        'Automatic worktree discovery and listing',
+        'Create new worktrees directly from the UI',
+        'Each agent works in its own isolated branch',
+        'No context switching between features'
+      ]}
+      reverse={true}
+    >
+      <GitWorktreeDemo />
+    </KeyFeatureWithSlot>
+
+    <KeyFeatureWithSlot
+      subtitle="Version Control"
+      title="Git Integration Built In"
+      description="Stay in your flow with a powerful git panel that brings version control directly into Skwad. View changes, stage files, review diffs, and commit—all without leaving your workspace or switching context."
+      features={[
+        'Visual git status panel showing all changes at a glance',
+        'Syntax-highlighted diffs for easy code review',
+        'One-click stage and unstage for individual files',
+        'Commit directly from the app with full history',
+        'Auto-refresh on file changes with FSEvents monitoring'
+      ]}
+    >
+      <GitStatusDemo />
+    </KeyFeatureWithSlot>
+
+    <KeyFeatureWithSlot
+      subtitle="Native Performance"
+      title="Built for Speed"
+      description="Skwad leverages GPU-accelerated Ghostty terminals and native SwiftUI for a fluid experience that keeps up with your workflow. Switch between agents instantly, terminals stay alive and preserve state."
+      features={[
+        'GPU-accelerated Ghostty terminal by default',
+        'SwiftTerm fallback for compatibility',
+        'Respects your ~/.config/ghostty/config for styling',
+        'Activity detection shows when agents are working or idle',
+        'All terminals kept alive in memory—no state loss when switching'
+      ]}
+      reverse={true}
+    >
+      <SpeedFeatureVisual client:load />
+    </KeyFeatureWithSlot>
+
+    <Install client:visible />
+
+    <Footer />
+  </main>
+</Layout>
