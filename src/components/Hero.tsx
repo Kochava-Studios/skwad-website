@@ -46,7 +46,7 @@ export default function Hero() {
                 Download for macOS
               </a>
               <p className="mt-4 text-sm text-zinc-500">
-                macOS 14.0+ • Free & Open Source
+                macOS 26.0+ • Free & Open Source
               </p>
             </div>
           </div>

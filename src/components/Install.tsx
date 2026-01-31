@@ -25,7 +25,7 @@ export default function Install() {
             <ul className="space-y-2 text-zinc-400">
               <li className="flex items-center gap-2">
                 <span className="text-indigo-400">•</span>
-                macOS 14.0 (Sonoma) or later
+                macOS 26.0 (Tahoe) or later
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-indigo-400">•</span>
