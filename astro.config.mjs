@@ -6,8 +6,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://bonamy.fr',
-  base: '/skwad',
+  site: 'https://kochava-studios.github.io',
+  base: '/skwad-website',
   integrations: [react()],
 
   vite: {
