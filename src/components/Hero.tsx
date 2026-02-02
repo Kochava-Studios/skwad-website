@@ -1,7 +1,10 @@
 import { getAssetPath } from '../utils/paths';
+import { useAppVersion } from '../hooks/useAppVersion';
 import ScreenshotLightbox from './ScreenshotLightbox';
 
 export default function Hero() {
+  const version = useAppVersion();
+
   return (
     <section className="min-h-screen flex items-center px-4 py-12 relative overflow-hidden">
       {/* Gradient background */}
@@ -38,12 +41,15 @@ export default function Hero() {
               <a
                 href={getAssetPath('Skwad.zip')}
                 download
-                className="inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold text-lg transition-all hover:scale-105 shadow-lg hover:shadow-indigo-500/50"
+                className="inline-flex items-start gap-3 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-all hover:scale-105 shadow-lg hover:shadow-indigo-500/50"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-                Download for macOS
+                <span className="flex flex-col items-start">
+                  <span className="text-lg">Download for macOS</span>
+                  {version && <span className="text-sm text-indigo-200/70">v{version}</span>}
+                </span>
               </a>
               <p className="mt-4 text-sm text-zinc-500">
                 macOS 26.0+ • Free & Open Source

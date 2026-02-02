@@ -1,6 +1,8 @@
 import { getAssetPath } from '../utils/paths';
+import { useAppVersion } from '../hooks/useAppVersion';
 
 export default function Install() {
+  const version = useAppVersion();
   return (
     <section id="install" className="py-24 px-4 relative bg-gradient-to-br from-indigo-950/20 via-transparent to-purple-950/20">
       <div className="max-w-4xl mx-auto">
@@ -45,12 +47,15 @@ export default function Install() {
               <a
                 href={getAssetPath('Skwad.zip')}
                 download
-                className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-all hover:scale-105"
+                className="inline-flex items-start gap-3 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-all hover:scale-105"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-                Download Skwad.zip
+                <span className="flex flex-col items-start">
+                  <span>Download for macOS</span>
+                  {version && <span className="text-sm text-indigo-200/70">v{version}</span>}
+                </span>
               </a>
               <p className="mt-4 text-xs text-zinc-500">
                 Or view <a href="https://github.com/nbonamy/skwad/releases" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:underline">all releases on GitHub</a>
