@@ -58,7 +58,7 @@ export default function Install() {
                 </span>
               </a>
               <p className="mt-4 text-xs text-zinc-500">
-                Or view <a href="https://github.com/nbonamy/skwad/releases" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:underline">all releases on GitHub</a>
+                Or view <a href="https://github.com/Kochava-Studios/skwad/releases" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:underline">all releases on GitHub</a>
               </p>
             </div>
 
@@ -81,7 +81,7 @@ export default function Install() {
                 </div>
                 <div className="p-4 font-mono text-sm text-zinc-300 space-y-2">
                   <div>
-                    <span className="text-indigo-400">$</span> git clone https://github.com/nbonamy/skwad.git
+                    <span className="text-indigo-400">$</span> git clone https://github.com/Kochava-Studios/skwad.git
                   </div>
                   <div>
                     <span className="text-indigo-400">$</span> cd skwad
