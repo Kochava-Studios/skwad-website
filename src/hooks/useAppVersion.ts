@@ -1,41 +1,37 @@
 import { useEffect, useState } from 'react';
-import { getAssetPath } from '../utils/paths';
+
+// GitHub API endpoint for latest release
+const GITHUB_API_URL = 'https://api.github.com/repos/Kochava-Studios/skwad/releases/latest';
 
 // Cache the version globally so multiple components share it
 let cachedVersion: string | null = null;
 let fetchPromise: Promise<string | null> | null = null;
 
+interface GitHubRelease {
+  tag_name: string;
+  name: string;
+  assets: Array<{
+    name: string;
+    browser_download_url: string;
+  }>;
+}
+
 async function fetchVersion(): Promise<string | null> {
-  const appcastUrl = getAssetPath('appcast.xml');
-  console.log('[useAppVersion] Fetching appcast from:', appcastUrl);
+  console.log('[useAppVersion] Fetching release from GitHub API');
   try {
-    const res = await fetch(appcastUrl);
+    const res = await fetch(GITHUB_API_URL);
     console.log('[useAppVersion] Fetch response status:', res.status, res.statusText);
     if (!res.ok) {
       throw new Error(`HTTP ${res.status}: ${res.statusText}`);
     }
-    const xml = await res.text();
-    console.log('[useAppVersion] Received XML:', xml.substring(0, 200) + '...');
+    const release: GitHubRelease = await res.json();
+    console.log('[useAppVersion] Release:', release.tag_name, release.name);
 
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(xml, 'text/xml');
-    const parserError = doc.querySelector('parsererror');
-    if (parserError) {
-      console.error('[useAppVersion] XML parse error:', parserError.textContent);
-      return null;
-    }
-
-    const v = doc.querySelector('shortVersionString')?.textContent;
-    const b = doc.querySelector('version')?.textContent;
-    console.log('[useAppVersion] Parsed version:', { shortVersionString: v, version: b });
-
-    if (v && b) {
-      return `${v} (build ${b})`;
-    }
-    console.warn('[useAppVersion] Missing version fields in appcast');
-    return null;
+    // tag_name is like "v1.0.42" - remove the "v" prefix
+    const version = release.tag_name.replace(/^v/, '');
+    return version;
   } catch (err) {
-    console.error('[useAppVersion] Failed to fetch appcast:', err);
+    console.error('[useAppVersion] Failed to fetch release:', err);
     return null;
   }
 }
