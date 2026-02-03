@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-// GitHub API endpoint for latest release
-const GITHUB_API_URL = 'https://api.github.com/repos/Kochava-Studios/skwad/releases/latest';
+// GitHub API endpoint for releases (not /latest since we need to filter)
+const GITHUB_API_URL = 'https://api.github.com/repos/Kochava-Studios/skwad/releases';
 
 // Cache the version globally so multiple components share it
 let cachedVersion: string | null = null;
@@ -17,21 +17,28 @@ interface GitHubRelease {
 }
 
 async function fetchVersion(): Promise<string | null> {
-  console.log('[useAppVersion] Fetching release from GitHub API');
+  console.log('[useAppVersion] Fetching releases from GitHub API');
   try {
     const res = await fetch(GITHUB_API_URL);
     console.log('[useAppVersion] Fetch response status:', res.status, res.statusText);
     if (!res.ok) {
       throw new Error(`HTTP ${res.status}: ${res.statusText}`);
     }
-    const release: GitHubRelease = await res.json();
+    const releases: GitHubRelease[] = await res.json();
+
+    // Find the first release with a version tag (starts with "v")
+    const release = releases.find(r => r.tag_name.startsWith('v'));
+    if (!release) {
+      console.warn('[useAppVersion] No version release found');
+      return null;
+    }
     console.log('[useAppVersion] Release:', release.tag_name, release.name);
 
     // tag_name is like "v1.0.42" - remove the "v" prefix
     const version = release.tag_name.replace(/^v/, '');
     return version;
   } catch (err) {
-    console.error('[useAppVersion] Failed to fetch release:', err);
+    console.error('[useAppVersion] Failed to fetch releases:', err);
     return null;
   }
 }
