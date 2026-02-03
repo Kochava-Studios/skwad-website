@@ -4,7 +4,7 @@
 
 The website is ready to deploy! It's built with Astro, React, and Tailwind CSS v4.
 
-**Current Configuration:** The site is configured for deployment at `https://bonamy.fr/skwad/` with base path `/skwad`.
+**Current Configuration:** The site is configured for deployment at `https://kochava-studios.github.io/skwad-website/` with base path `/skwad-website`.
 
 ## Configuring Base Path
 

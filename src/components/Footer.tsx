@@ -56,7 +56,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-500">
-          <p>© 2026 Skwad. Released under MIT License.</p>
+          <p>© 2026 Kochava Studios. Released under MIT License.</p>
           <div className="flex items-center gap-6">
             <a href="https://github.com/Kochava-Studios/skwad" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400 transition-colors">
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

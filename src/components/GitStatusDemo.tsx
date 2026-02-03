@@ -99,7 +99,7 @@ export default function GitStatusDemo() {
             <div className="text-zinc-500">4  7  // https://astro.build/config</div>
             <div className="bg-red-950/30 text-red-400">5     -export default defineConfig({'{}'});</div>
             <div className="bg-emerald-950/30 text-emerald-400">   8  +export default defineConfig({'{'}</div>
-            <div className="bg-emerald-950/30 text-emerald-400">   9  +  site: 'https://bonamy.fr',</div>
+            <div className="bg-emerald-950/30 text-emerald-400">   9  +  site: 'https://kochava.com',</div>
             <div className="bg-emerald-950/30 text-emerald-400">  10  +  base: '/skwad',</div>
             <div className="bg-emerald-950/30 text-emerald-400">  11  +  integrations: [react()],</div>
             <div className="bg-emerald-950/30 text-emerald-400">  12  +</div>
