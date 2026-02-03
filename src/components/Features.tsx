@@ -29,6 +29,11 @@ const features = [
     title: 'Powerful worktree support',
     description: 'Create agents from existing worktrees or spin up new ones for isolated feature development.',
   },
+  {
+    icon: '🎙️',
+    title: 'Voice input',
+    description: 'Talk to your agents with built-in speech-to-text. Perfect for hands-free coding sessions.',
+  },
 ];
 
 export default function Features() {
