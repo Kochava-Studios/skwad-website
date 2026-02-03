@@ -7,6 +7,15 @@ const GITHUB_API_URL = 'https://api.github.com/repos/Kochava-Studios/skwad/relea
 let cachedVersion: string | null = null;
 let fetchPromise: Promise<string | null> | null = null;
 
+// Format version: "1.0.0.11" -> "1.0.0 (11)"
+function formatVersion(version: string): string {
+  const parts = version.split('.');
+  if (parts.length === 4) {
+    return `${parts[0]}.${parts[1]}.${parts[2]} (${parts[3]})`;
+  }
+  return version;
+}
+
 interface GitHubRelease {
   tag_name: string;
   name: string;
@@ -34,9 +43,9 @@ async function fetchVersion(): Promise<string | null> {
     }
     console.log('[useAppVersion] Release:', release.tag_name, release.name);
 
-    // tag_name is like "v1.0.42" - remove the "v" prefix
-    const version = release.tag_name.replace(/^v/, '');
-    return version;
+    // tag_name is like "v1.0.0.11" - remove the "v" prefix and format
+    const rawVersion = release.tag_name.replace(/^v/, '');
+    return formatVersion(rawVersion);
   } catch (err) {
     console.error('[useAppVersion] Failed to fetch releases:', err);
     return null;
