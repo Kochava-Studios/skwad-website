@@ -34,6 +34,11 @@ const features = [
     title: 'Voice input',
     description: 'Talk to your agents with built-in speech-to-text. Perfect for hands-free coding sessions.',
   },
+  {
+    icon: '📄',
+    title: 'Markdown preview',
+    description: 'View plans and documentation in a beautifully rendered panel with full dark mode support.',
+  },
 ];
 
 export default function Features() {
