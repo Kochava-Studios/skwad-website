@@ -7,6 +7,7 @@ import KeyFeature from '../components/KeyFeature';
 import KeyFeatureWithSlot from '../components/KeyFeatureWithSlot.astro';
 import Install from '../components/Install';
 import Footer from '../components/Footer';
+import CompanionDemo from '../components/CompanionDemo';
 import GitWorktreeDemo from '../components/GitWorktreeDemo';
 import GitStatusDemo from '../components/GitStatusDemo';
 import SpeedFeatureVisual from '../components/SpeedFeatureVisual';
@@ -31,6 +32,21 @@ import SpeedFeatureVisual from '../components/SpeedFeatureVisual';
       ]}
       highlight={true}
     />
+
+    <KeyFeatureWithSlot
+      subtitle="Sidekick Mode"
+      title="Companion Agents"
+      description="Attach lightweight companion agents to any AI agent. Companions share the screen with their owner and are perfect for running shells alongside your coding agent—watch tests, tail logs, or run dev servers without leaving your workspace."
+      features={[
+        'Shell companions for builds, tests, and dev servers',
+        'Auto-share screen—companion is always visible next to its owner',
+        'Fork or duplicate agents instantly with Cmd+F / Cmd+D',
+        'Companions auto-hide when you switch to another agent',
+      ]}
+      reverse={true}
+    >
+      <CompanionDemo client:load />
+    </KeyFeatureWithSlot>
 
     <SupportedAgents client:visible />
 

@@ -39,6 +39,11 @@ const features = [
     title: 'Markdown preview',
     description: 'View plans and documentation in a beautifully rendered panel with full dark mode support.',
   },
+  {
+    icon: '🔔',
+    title: 'Never miss a prompt',
+    description: 'Skwad detects when Claude needs your input and notifies you with a visual indicator and desktop notification.',
+  },
 ];
 
 export default function Features() {
