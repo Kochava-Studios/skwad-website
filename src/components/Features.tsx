@@ -15,6 +15,16 @@ const features = [
     description: 'Built-in MCP server lets agents coordinate work themselves and hand off tasks seamlessly.',
   },
   {
+    icon: '🤖',
+    title: 'Autopilot',
+    description: 'LLM-powered message classification auto-handles agent prompts so you only intervene when it matters.',
+  },
+  {
+    icon: '📄',
+    title: 'Artifacts',
+    description: 'Agents display markdown documents and Mermaid diagrams in rich preview panels you can review and comment.',
+  },
+  {
     icon: '🔀',
     title: 'Git without context switching',
     description: 'View diffs, stage files, commit changes, and manage worktrees—all without leaving the app.',
@@ -25,19 +35,9 @@ const features = [
     description: 'Name your agents, assign emoji or image avatars, customize colors, and arrange your workspace.',
   },
   {
-    icon: '⚙️',
-    title: 'Powerful worktree support',
-    description: 'Create agents from existing worktrees or spin up new ones for isolated feature development.',
-  },
-  {
     icon: '🎙️',
     title: 'Voice input',
     description: 'Talk to your agents with built-in speech-to-text. Perfect for hands-free coding sessions.',
-  },
-  {
-    icon: '📄',
-    title: 'Markdown preview',
-    description: 'View plans and documentation in a beautifully rendered panel with full dark mode support.',
   },
   {
     icon: '🔔',

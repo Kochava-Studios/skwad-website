@@ -64,12 +64,7 @@ export default function Install() {
 
             {/* From Source */}
             <div className="bg-zinc-900/50 backdrop-blur-sm rounded-2xl p-8 border border-zinc-800">
-              <div className="flex items-center gap-3 mb-4">
-                <h3 className="text-xl font-bold text-white">Build from Source</h3>
-                <span className="px-3 py-1 bg-indigo-600/20 border border-indigo-500/30 rounded-full text-xs text-indigo-400 font-semibold">
-                  Coming Soon
-                </span>
-              </div>
+              <h3 className="text-xl font-bold mb-4 text-white">Build from Source</h3>
               <p className="text-zinc-400 mb-6">
                 Clone the repo and build with Xcode
               </p>
