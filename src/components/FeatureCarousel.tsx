@@ -7,6 +7,7 @@ import SpeedFeatureVisual from './SpeedFeatureVisual';
 import AutopilotDemo from './AutopilotDemo';
 import FileFinderDemo from './FileFinderDemo';
 import ArtifactsDemo from './ArtifactsDemo';
+import CompanionDemo from './CompanionDemo';
 
 interface Slide {
   subtitle: string;
@@ -54,10 +55,10 @@ function AgentCommVisual() {
 const slides: Slide[] = [
   {
     subtitle: 'The Game Changer',
-    title: 'Agent-to-Agent Communication',
-    description: 'The main differentiator of Skwad is its built-in MCP server that enables true collaboration. Agents can discover each other, send messages, broadcast updates, and coordinate complex tasks without your intervention.',
+    title: 'Fully Autonomous Skwads',
+    description: 'Skwad\'s built-in MCP server turns your agents into a self-organizing team. They discover each other, communicate, spin up new agents when needed, and coordinate complex tasks—all without your intervention.',
     features: [
-      'Agents auto-register when they start up',
+      'Agents create and close other agents on the fly',
       'Send direct messages or broadcast to all agents',
       'Automatic notifications when agents become idle',
       'Real coordination, not just parallel execution',
@@ -77,6 +78,18 @@ const slides: Slide[] = [
       'No context switching between features',
     ],
     visual: <GitWorktreeDemo />,
+  },
+  {
+    subtitle: 'Sidekick Mode',
+    title: 'Companion Agents',
+    description: 'Attach lightweight companion agents to any AI agent. Companions share the screen with their owner and are perfect for running shells alongside your coding agent—watch tests, tail logs, or run dev servers without leaving your workspace.',
+    features: [
+      'Shell companions for builds, tests, and dev servers',
+      'Auto-share screen—companion is always visible next to its owner',
+      'Fork or duplicate agents instantly with Cmd+F / Cmd+D',
+      'Companions auto-hide when you switch to another agent',
+    ],
+    visual: <CompanionDemo />,
   },
   {
     subtitle: 'Rich Output',
