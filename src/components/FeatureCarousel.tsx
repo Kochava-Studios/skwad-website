@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import GitWorktreeDemo from './GitWorktreeDemo';
@@ -8,6 +8,8 @@ import AutopilotDemo from './AutopilotDemo';
 import FileFinderDemo from './FileFinderDemo';
 import ArtifactsDemo from './ArtifactsDemo';
 import CompanionDemo from './CompanionDemo';
+import BenchDemo from './BenchDemo';
+import PersonasDemo from './PersonasDemo';
 
 interface Slide {
   subtitle: string;
@@ -92,6 +94,30 @@ const slides: Slide[] = [
     visual: <CompanionDemo />,
   },
   {
+    subtitle: 'Agent Identity',
+    title: 'Personas',
+    description: 'Assign personalities inspired by legendary engineers—Kent Beck, John Carmack, and more—to shape how your agents write code. Or create custom personas with your own rules and preferences.',
+    features: [
+      'Built-in personas from iconic software engineers',
+      'Each persona influences coding style, patterns, and priorities',
+      'Create custom personas with your own guidelines',
+      'Agents can assign personas when spawning new agents',
+    ],
+    visual: <PersonasDemo />,
+  },
+  {
+    subtitle: 'Instant Deploy',
+    title: 'The Bench',
+    description: 'Save your favorite agent configurations—name, type, persona, workspace—and deploy them instantly. Drag a config from the bench into any workspace and your team is ready to go in seconds.',
+    features: [
+      'Save and name reusable agent configurations',
+      'Drag-and-drop deployment into any workspace',
+      'Includes agent type, persona, and workspace setup',
+      'Go from zero to full team in one gesture',
+    ],
+    visual: <BenchDemo />,
+  },
+  {
     subtitle: 'Rich Output',
     title: 'Artifacts',
     description: 'Agents can display rich content directly in Skwad. Review markdown documents with an approve/comment workflow, or visualize architecture with Mermaid diagrams—flowcharts, state diagrams, sequence diagrams, and more.',
@@ -161,6 +187,20 @@ export default function FeatureCarousel() {
     [Autoplay({ delay: 8000, stopOnInteraction: true, stopOnMouseEnter: true })]
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const navRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const navContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const container = navContainerRef.current;
+    // scroll so the item before the selected one is at the top
+    const prevEl = navRefs.current[Math.max(0, selectedIndex - 1)];
+    if (container && prevEl) {
+      container.scrollTo({
+        top: prevEl.offsetTop - container.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  }, [selectedIndex]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -175,6 +215,8 @@ export default function FeatureCarousel() {
   }, [emblaApi, onSelect]);
 
   const scrollTo = useCallback((index: number) => {
+    const autoplay = emblaApi?.plugins()?.autoplay as any;
+    if (autoplay) autoplay.stop();
     emblaApi?.scrollTo(index);
   }, [emblaApi]);
 
@@ -187,10 +229,10 @@ export default function FeatureCarousel() {
   }, [emblaApi]);
 
   return (
-    <section className="py-24 px-4 relative">
+    <section className="pt-24 px-4 relative">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-24">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
             Features In Depth
           </h2>
@@ -201,12 +243,13 @@ export default function FeatureCarousel() {
 
         <div className="flex gap-8">
           {/* Left side navigation */}
-          <div className="hidden md:flex flex-col gap-1 flex-shrink-0 w-56 pt-4">
+          <div ref={navContainerRef} className="hidden md:block flex-shrink-0 w-56 pt-4 h-[24rem] overflow-y-auto scrollbar-hide space-y-1">
             {slides.map((slide, index) => (
               <button
                 key={index}
+                ref={(el) => { navRefs.current[index] = el; }}
                 onClick={() => scrollTo(index)}
-                className={`text-left px-4 py-3 rounded-lg transition-all duration-300 ${
+                className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${
                   selectedIndex === index
                     ? 'bg-indigo-600/10 border border-indigo-500/20'
                     : 'hover:bg-zinc-800/50 border border-transparent'
@@ -232,7 +275,7 @@ export default function FeatureCarousel() {
               <div className="flex">
                 {slides.map((slide, index) => (
                   <div key={index} className="flex-[0_0_100%] min-w-0 px-4">
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
+                    <div className="grid md:grid-cols-2 gap-12 items-start">
                       {/* Content */}
                       <div>
                         <div className="inline-block px-4 py-2 bg-indigo-600/10 rounded-full text-indigo-400 text-sm font-semibold mb-4 border border-indigo-500/20">

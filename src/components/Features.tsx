@@ -5,24 +5,9 @@ const features = [
     description: 'Your agents are always visible, always alive, always ready. No more hunting through tabs.',
   },
   {
-    icon: '⚡',
-    title: 'Fast, native, fluid',
-    description: 'GPU-accelerated Ghostty terminals and a SwiftUI interface that keeps up with your workflow.',
-  },
-  {
     icon: '🤝',
     title: 'Actually collaborative',
     description: 'Built-in MCP server lets agents coordinate work themselves and hand off tasks seamlessly.',
-  },
-  {
-    icon: '🤖',
-    title: 'Autopilot',
-    description: 'LLM-powered message classification auto-handles agent prompts so you only intervene when it matters.',
-  },
-  {
-    icon: '📄',
-    title: 'Artifacts',
-    description: 'Agents display markdown documents and Mermaid diagrams in rich preview panels you can review and comment.',
   },
   {
     icon: '🔀',
@@ -30,9 +15,24 @@ const features = [
     description: 'View diffs, stage files, commit changes, and manage worktrees—all without leaving the app.',
   },
   {
-    icon: '🎨',
-    title: 'Customizable setup',
-    description: 'Name your agents, assign emoji or image avatars, customize colors, and arrange your workspace.',
+    icon: '📄',
+    title: 'Artifacts',
+    description: 'Agents display markdown documents and Mermaid diagrams in rich preview panels you can review and comment.',
+  },
+  {
+    icon: '🎭',
+    title: 'Personas',
+    description: 'Give agents personalities from legendary engineers—or create your own—to shape their coding style.',
+  },
+  {
+    icon: '🪑',
+    title: 'The Bench',
+    description: 'Save your favorite agent configurations and deploy them instantly via drag-and-drop into any workspace.',
+  },
+  {
+    icon: '🤖',
+    title: 'Autopilot',
+    description: 'LLM-powered message classification auto-handles agent prompts so you only intervene when it matters.',
   },
   {
     icon: '🎙️',
